@@ -6,10 +6,10 @@ export default function Navbar(props) {
   const toggleMode = () => {
     if (document.body.attributes["data-bs-theme"].nodeValue === 'dark') {
       document.body.attributes["data-bs-theme"].nodeValue = 'light';
-      props.showAlert("success", "Light Mode is Enabled");
+      props.showAlert("success", "Light Mode is Enabled!");
     } else {
       document.body.attributes["data-bs-theme"].nodeValue = 'dark';
-      props.showAlert("success", "Dark Mode is Enabled");
+      props.showAlert("success", "Dark Mode is Enabled!");
     }
   }
 

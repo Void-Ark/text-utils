@@ -22,9 +22,7 @@ export default function TextForm(props) {
     };
 
     const handleOnClickCopy = ()=> {
-      let data = document.getElementById('myBox');
-      data.select();
-      navigator.clipboard.writeText(data.value);
+      navigator.clipboard.writeText(text);
       props.showAlert("success", "The text is copied to clipboard Successfully!");
     };
     
@@ -33,7 +31,8 @@ export default function TextForm(props) {
       props.showAlert("success", "Extra Space is removed Successfully!");
     };
 
-    
+    const countWords=(sentence)=> sentence.split(/\s+/).filter((element)=>element.length!== 0).length; 
+
     return (
 <div className="container my-3">  
   <h1>{props.heading}</h1>
@@ -41,7 +40,7 @@ export default function TextForm(props) {
   <div className="mb-3">
     <textarea className="form-control" id="myBox" rows="8" value={text} onChange={handleOnChange}/>
     
-    <p>Characters:{text.length} | Words: {text.split(' ').length} | Read Time: {(text.split(' ').length*0.008).toPrecision(2)} mins</p>
+    <p>Characters:{text.length} | Words: {countWords(text)} | Read Time: {(countWords(text)*0.008).toPrecision(2)} mins</p>
   </div>
   
   <button className="btn btn-secondary mx-1 my-1" onClick={handleOnClickUpper}>Convert to UpperCase</button>
